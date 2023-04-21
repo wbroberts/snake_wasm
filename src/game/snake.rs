@@ -33,20 +33,12 @@ impl Snake {
     }
 
     pub fn draw(&self, ctx: &CanvasRenderingContext2d, size: f64) {
-        for Coord(x, y) in self.body.iter() {
-            let x = *x as f64;
-            let y = *y as f64;
-
-            ctx.set_fill_style(&"green".into());
-            ctx.fill_rect(x * size, y * size, size - 1.0, size - 1.0);
+        for coord in self.body.iter() {
+            coord.draw(ctx, size, "green");
         }
 
         if let Some(tail) = self.prev_tail {
-            let Coord(x, y) = tail;
-            let x = x as f64;
-            let y = y as f64;
-
-            ctx.clear_rect(x * size, y * size, size - 1.0, size - 1.0);
+            tail.clear(ctx, size);
         }
     }
 

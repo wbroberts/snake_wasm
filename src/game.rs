@@ -91,7 +91,7 @@ impl Game {
         self.snake.draw(&self.ctx, self.grid_size as f64);
 
         if let Some(apple) = self.apple {
-            apple.draw(&self.ctx, self.grid_size as f64);
+            apple.draw(&self.ctx, self.grid_size as f64, "red");
         }
     }
 

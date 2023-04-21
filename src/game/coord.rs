@@ -15,12 +15,20 @@ impl Coord {
         Coord(x, y)
     }
 
-    pub fn draw(&self, ctx: &CanvasRenderingContext2d, size: f64) {
+    pub fn draw(&self, ctx: &CanvasRenderingContext2d, size: f64, color: &str) {
         let Self(x, y) = self;
         let x = *x as f64;
         let y = *y as f64;
 
-        ctx.set_fill_style(&"red".into());
+        ctx.set_fill_style(&color.into());
         ctx.fill_rect(x * size, y * size, size - 1.0, size - 1.0);
+    }
+
+    pub fn clear(&self, ctx: &CanvasRenderingContext2d, size: f64) {
+        let Self(x, y) = self;
+        let x = *x as f64;
+        let y = *y as f64;
+
+        ctx.clear_rect(x * size, y * size, size - 1.0, size - 1.0);
     }
 }
